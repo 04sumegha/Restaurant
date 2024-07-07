@@ -1,0 +1,53 @@
+.left{
+    display: inline-block;
+    width: 50vw;
+}
+
+.left img{
+    width: 25vw;
+    border-radius: 20px;
+    display: block;
+}
+
+.img1{
+    padding: 0.3vw;
+    border: 6px solid #ac3b61;
+}
+
+.img2{
+    padding: 0.3vw;
+    margin-left: 20vw;
+    border: 6px solid #ac3b61;
+}
+
+.img3{
+    padding: 0.3vw;
+    border: 6px solid #ac3b61;
+}
+
+.right{
+    display: inline-block;
+    width: 44vw;
+    position: absolute;
+    padding: 25px;
+}
+
+.right h2{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    color: #ac3b61;
+    margin: 15px;
+}
+
+.right ul{
+    padding: 15px;
+}
+
+.right ul li{
+    font-size: 28px;
+    list-style-type: none;
+    margin: 10px;
+    margin-bottom: 10%;
+    color: #123c69;
+}
