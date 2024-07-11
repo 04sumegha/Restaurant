@@ -4,6 +4,7 @@ const User = require("../models/user");
 
 const create = async (req, res) => {
     const body = req.body;
+    console.log(body)
     
     const userId = req.userId;
     let userDetails = await User.findOne({email: req.email});
@@ -11,14 +12,16 @@ const create = async (req, res) => {
     if(!body.tableNumber){
         return res.status(400).json({message: "Table number is required"});
     }
-    if(!body.items.name){
-        return res.status(400).json({message: "Name of the item is required"});
-    }
-    if(!body.items.quantity){
-        return res.status(400).json({message: "Quantity of the item is required"});
-    }
-    if(!body.items.price){
-        return res.status(400).json({message: "Price of the item is required"});
+    for(let i = 0; i < body.items.length; i++){
+        if(!body.items[i].name){
+            return res.status(400).json({message: "Name of the item is required"});
+        }
+        if(!body.items[i].quantity){
+            return res.status(400).json({message: "Quantity of the item is required"});
+        }
+        if(!body.items[i].price){
+            return res.status(400).json({message: "Price of the item is required"});
+        }
     }
     if(!body.totalAmount){
         return res.status(400).json({message: "Total amount is required"});

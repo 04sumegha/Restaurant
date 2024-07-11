@@ -1,0 +1,50 @@
+.auth{
+    border: 1px solid black;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    background: #bab2b5;
+    margin-top: 10vh;
+}
+
+.auth h3{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.field{
+    margin: 30px;
+}
+
+.field input{
+    width: 30vw;
+    height: 5vh;
+    font-size: 20px;
+    padding: 7px;
+    border-radius: 20px;
+    border: none;
+    background: #eee2dc;
+}
+
+.auth button{
+    width: 25vw;
+    height: 5vh;
+    margin: 10px;
+    margin-left: 65px;
+    border-radius: 20px;
+    font-size: 20px;
+    background: #123c69;
+    color: #ac3b61;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth p{
+    font-size: 20px;
+    margin: 5px;
+    margin-top: 25px;
+}

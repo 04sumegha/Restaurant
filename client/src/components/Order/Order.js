@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { items } from '../../items'
+import axios from 'axios'
 import './Order.css'
+import {useNavigate} from 'react-router-dom'
 
 const ItemCard = ({id, itemImage, itemName, itemPrice, addToCart}) => {
   return (
@@ -62,6 +64,9 @@ const Order = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [tableNumber, setTableNumber] = useState(1);
+
+  const navigate = useNavigate()
 
   const addToCart = (product) => {
     const existing = cartItems.find(item => item.id === product.id);
@@ -73,7 +78,6 @@ const Order = () => {
     else{
       setCartItems([...cartItems, {...product, quantity: 1}])
     }
-    console.log(cartItems)
   }
 
   const increaseQuantity = (productId) => {
@@ -91,7 +95,37 @@ const Order = () => {
     })
   }
 
-  const totalPrice = cartItems.reduce((sum, item) => sum + (item.itemPrice * item.quantity), 0)
+  const totalAmount = cartItems.reduce((sum, item) => sum + (item.itemPrice * item.quantity), 0)
+
+  const handlesubmit = async(event) => {
+    event.preventDefault();
+
+    const orderItems = cartItems.map(item => ({
+      name: item.itemName,
+      price: item.itemPrice,
+      quantity: item.quantity
+    }));
+
+    try {
+      const token = window.localStorage.getItem("cookies");
+
+      const result = await axios.post("http://localhost:8000/api/order/create", {
+        token,
+        tableNumber,
+        items: orderItems,
+        totalAmount
+      })
+
+      console.log(result)
+      setCartItems([])
+      navigate("/")
+      alert("Thank You For Placing An Order With Use.")
+    } 
+    
+    catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className='order-box'>
@@ -147,15 +181,15 @@ const Order = () => {
           {cartItems.map(item => (
             <Cart key={item.id} {...item} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>
           ))}
-          <p className='total'>Total Price: {totalPrice}</p>
+          <p className='total'>Total Price: {totalAmount}</p>
           {cartItems.length !== 0 && 
             <div className='table'>
               <p>Choose A Table From 1 to 10</p>
-              <input type="number" name="table number" min={1} max={10} />
+              <input onChange={(event) => setTableNumber(event.target.value)} defaultValue={1} type="number" name="table number" min={1} max={10} required/>
             </div>
           }
           {cartItems.length !== 0 && 
-            <button className='place-order'>Place Order</button>
+            <button onClick={handlesubmit} className='place-order'>Place Order</button>
           }
         </div> 
       }
