@@ -110,10 +110,13 @@ const Order = () => {
       const token = window.localStorage.getItem("cookies");
 
       const result = await axios.post("http://localhost:8000/api/order/create", {
-        token,
         tableNumber,
         items: orderItems,
         totalAmount
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
 
       console.log(result)
@@ -123,7 +126,7 @@ const Order = () => {
     } 
     
     catch (error) {
-      console.log(error)
+      console.log(error.response.data.message)
     }
   }
 

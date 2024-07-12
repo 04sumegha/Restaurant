@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home"
 import Menu from "./pages/Menu/Menu"
 import Auth from "./pages/Auth/User/Auth"
 import StaffAuth from "./pages/Auth/Staff/StaffAuth"
+import See from "./pages/See/See"
 
 const App = () => {
     return(
@@ -13,6 +14,7 @@ const App = () => {
                 <Route path="/menu" Component={Menu}/>
                 <Route path="/auth/user" Component={Auth}/>
                 <Route path="/auth/staff" Component={StaffAuth}/>
+                <Route path="/see" Component={See}/>
             </Routes>
         </Router>
     )

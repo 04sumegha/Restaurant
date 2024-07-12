@@ -1,0 +1,39 @@
+.box{
+    margin: 10px;
+    padding: 10px;
+}
+
+.box table{
+    margin: 40px;
+    margin-left: 250px;
+    border: 2px solid #123c69;
+}
+
+.box table thead tr th{
+    width: 300px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.box table tbody tr td{
+    border: 2px solid #123c69;
+    height: 100px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.box table tbody tr td ul li{
+    list-style-type: none;
+}
+
+.box table tbody tr td .change{
+    border: none;
+    width: 90px;
+    height: 30px;
+    margin-left: 80px;
+    background: #123c69;
+    color: #ac3b61;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+}

@@ -73,6 +73,7 @@ const get = async (req, res) => {
 module.exports.get = get;
 
 const update = async(req, res) => {
+    console.log(req.query)
     const orderId = req.query._id;
 
     let order;
@@ -94,6 +95,6 @@ const update = async(req, res) => {
         return res.status(500).json({message: "Order could not be updated"});    
     }
 
-    return res.status(200).json(order);
+    return res.status(200).json({data: "success"});
 }
 module.exports.update = update;
